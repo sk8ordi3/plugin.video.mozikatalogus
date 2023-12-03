@@ -1,0 +1,6 @@
+﻿[B]1.0.2[/B]
+- os, kodi, addon verziószám írása a logba
+[B]1.0.1[/B]
+- kategóriák, kereső bővítése
+[B]1.0.0[/B]
+- Első verzió
