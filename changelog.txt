@@ -1,4 +1,6 @@
-﻿[B]1.0.2[/B]
+﻿[B]1.0.3[/B]
+- os verzió kiszedése
+[B]1.0.2[/B]
 - os, kodi, addon verziószám írása a logba
 [B]1.0.1[/B]
 - kategóriák, kereső bővítése

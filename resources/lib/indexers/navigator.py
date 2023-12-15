@@ -31,21 +31,11 @@ sysaddon = sys.argv[0]
 syshandle = int(sys.argv[1])
 addonFanart = xbmcaddon.Addon().getAddonInfo('fanart')
 
-import platform
-import xml.etree.ElementTree as ET
-
-os_info = platform.platform()
+version = xbmcaddon.Addon().getAddonInfo('version')
 kodi_version = xbmc.getInfoLabel('System.BuildVersion')
+base_log_info = f'Mozikatalogus | v{version} | Kodi: {kodi_version[:5]}'
 
-current_directory = os.path.dirname(os.path.abspath(__file__))
-parent_directory = os.path.dirname(os.path.dirname(os.path.dirname(current_directory)))
-addon_xml_path = os.path.join(parent_directory, "addon.xml")
-
-tree = ET.parse(addon_xml_path)
-root = tree.getroot()
-version = root.attrib.get("version")
-
-xbmc.log(f'Mozikatalogus | v{version} | Kodi: {kodi_version[:5]}| OS: {os_info}', xbmc.LOGINFO)
+xbmc.log(f'{base_log_info}', xbmc.LOGINFO)
 
 base_url = 'https://mozikatalogus.hu'
 
@@ -179,7 +169,7 @@ class navigator:
                 next_page_url = next_page_link.get('href')
                 self.addDirectoryItem('[I]Következő oldal[/I]', f'items&url={quote_plus(next_page_url)}', '', 'DefaultFolder.png')
         except AttributeError:
-            xbmc.log(f'Mozikatalogus | v{version} | Kodi: {kodi_version[:5]}| OS: {os_info} | getOnlyMovies | next_page_url | csak egy oldal található', xbmc.LOGINFO)
+            xbmc.log(f'{base_log_info}| getOnlyMovies | next_page_url | csak egy oldal található', xbmc.LOGINFO)
         
         self.endDirectory('movies')
 
@@ -210,7 +200,7 @@ class navigator:
                 next_page_url = next_page_link.get('href')
                 self.addDirectoryItem('[I]Következő oldal[/I]', f'actor_items&url={quote_plus(next_page_url)}', '', 'DefaultFolder.png')
         except AttributeError:
-            xbmc.log(f'Mozikatalogus | v{version} | Kodi: {kodi_version[:5]}| OS: {os_info} | getActorItems | next_page_url | csak egy oldal található', xbmc.LOGINFO)
+            xbmc.log(f'{base_log_info}| getActorItems | next_page_url | csak egy oldal található', xbmc.LOGINFO)
         
         self.endDirectory('movies')
     
@@ -248,7 +238,7 @@ class navigator:
                 next_page_url = next_page_link.get('href')
                 self.addDirectoryItem('[I]Következő oldal[/I]', f'movie_items&url={quote_plus(next_page_url)}', '', 'DefaultFolder.png')
         except AttributeError:
-            xbmc.log(f'Mozikatalogus | v{version} | Kodi: {kodi_version[:5]}| OS: {os_info} | getOnlyMovies | next_page_url | csak egy oldal található', xbmc.LOGINFO)
+            xbmc.log(f'{base_log_info}| getOnlyMovies | next_page_url | csak egy oldal található', xbmc.LOGINFO)
         
         self.endDirectory('movies')
 
@@ -260,7 +250,7 @@ class navigator:
         iframe_tag = soup_2.find('iframe')
         if iframe_tag:
             iframe_src = iframe_tag.get('src')
-            xbmc.log(f'Mozikatalogus | v{version} | Kodi: {kodi_version[:5]}| OS: {os_info} | extractMovie | iframe_src | {iframe_src}', xbmc.LOGINFO)
+            xbmc.log(f'{base_log_info}| extractMovie | iframe_src | {iframe_src}', xbmc.LOGINFO)
             
         self.addDirectoryItem(f'[B]{hun_title}[/B]', f'playmovie&url={quote_plus(iframe_src)}&img_url={img_url}&hun_title={quote_plus(hun_title)}&content={content}', img_url, 'DefaultMovies.png', isFolder=False, meta={'title': hun_title, 'plot': content})
         
@@ -300,7 +290,7 @@ class navigator:
                 next_page_url = next_page_link.get('href')
                 self.addDirectoryItem('[I]Következő oldal[/I]', f'series_items&url={quote_plus(next_page_url)}', '', 'DefaultFolder.png')
         except AttributeError:
-            xbmc.log(f'Mozikatalogus | v{version} | Kodi: {kodi_version[:5]}| OS: {os_info} | getOnlySeries | next_page_url | csak egy oldal található', xbmc.LOGINFO)
+            xbmc.log(f'{base_log_info}| getOnlySeries | next_page_url | csak egy oldal található', xbmc.LOGINFO)
         
         self.endDirectory('series')      
 
@@ -339,7 +329,7 @@ class navigator:
                 next_page_url = next_page_link.get('href')
                 self.addDirectoryItem('[I]Következő oldal[/I]', f'movie_items&url={quote_plus(next_page_url)}', '', 'DefaultFolder.png')
         except AttributeError:
-            xbmc.log(f'Mozikatalogus | v{version} | Kodi: {kodi_version[:5]}| OS: {os_info} | getOnlyMovies | next_page_url | csak egy oldal található', xbmc.LOGINFO)
+            xbmc.log(f'{base_log_info}| getOnlyMovies | next_page_url | csak egy oldal található', xbmc.LOGINFO)
         
         self.endDirectory('movies')
 
@@ -377,7 +367,7 @@ class navigator:
                 next_page_url = next_page_link.get('href')
                 self.addDirectoryItem('[I]Következő oldal[/I]', f'series_items&url={quote_plus(next_page_url)}', '', 'DefaultFolder.png')
         except AttributeError:
-            xbmc.log(f'Mozikatalogus | v{version} | Kodi: {kodi_version[:5]}| OS: {os_info} | getOnlyMovies | next_page_url | csak egy oldal található', xbmc.LOGINFO)
+            xbmc.log(f'{base_log_info}| getOnlyMovies | next_page_url | csak egy oldal található', xbmc.LOGINFO)
         
         self.endDirectory('series')
 
@@ -409,7 +399,7 @@ class navigator:
 
         if iframe:
             iframe_src = iframe.get('src')
-            xbmc.log(f'Mozikatalogus | v{version} | Kodi: {kodi_version[:5]}| OS: {os_info} | extractEpisodes | iframe_src | {iframe_src}', xbmc.LOGINFO)
+            xbmc.log(f'{base_log_info}| extractEpisodes | iframe_src | {iframe_src}', xbmc.LOGINFO)
 
             if re.match(r'.*on[vid,mov].*', iframe_src):
                 #https://onmov.me/embed/G9bG/ # 1. "rossz" > átalakítás: https://onvid.hu/embed/G9bG/
@@ -434,7 +424,7 @@ class navigator:
         
         if re.match(r'.*on[vid,mov].*', url):
         
-            xbmc.log(f'Mozikatalogus | v{version} | Kodi: {kodi_version[:5]}| OS: {os_info} | playMovie | playing onvid: {url}', xbmc.LOGINFO)
+            xbmc.log(f'{base_log_info}| playMovie | playing onvid: {url}', xbmc.LOGINFO)
 
             play_item = xbmcgui.ListItem(path=url)
             play_item.setProperty("User-Agent", "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Safari/537.36")
@@ -446,11 +436,11 @@ class navigator:
             try:
                 direct_url = urlresolver.resolve(url)
                 
-                xbmc.log(f'Mozikatalogus | v{version} | Kodi: {kodi_version[:5]}| OS: {os_info} | playMovie | direct_url: {direct_url}', xbmc.LOGINFO)
+                xbmc.log(f'{base_log_info}| playMovie | direct_url: {direct_url}', xbmc.LOGINFO)
                 play_item = xbmcgui.ListItem(path=direct_url)
                 xbmcplugin.setResolvedUrl(syshandle, True, listitem=play_item)
             except:
-                xbmc.log(f'Mozikatalogus | v{version} | Kodi: {kodi_version[:5]}| OS: {os_info} | playMovie | name: No video sources found', xbmc.LOGINFO)
+                xbmc.log(f'{base_log_info}| playMovie | name: No video sources found', xbmc.LOGINFO)
                 notification = xbmcgui.Dialog()
                 notification.notification("Mozikatalogus", "Törölt tartalom", time=5000)
 
