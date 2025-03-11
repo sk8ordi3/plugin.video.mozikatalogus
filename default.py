@@ -47,9 +47,6 @@ elif action == 'extract_series':
 elif action == 'extract_episodes':
     navigator.navigator().extractEpisodes(url, img_url, hun_title, content, ep_title)
 
-elif action == 'extract_movie':
-    navigator.navigator().extractMovie(url, img_url, hun_title, content)
-
 elif action == 'categories':
     navigator.navigator().getCategories()   
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="plugin.video.mozikatalogus" name="Mozikatalogus" version="1.0.3" provider-name="heg, vargalex">
+<addon id="plugin.video.mozikatalogus" name="Mozikatalogus" version="1.0.4" provider-name="heg, vargalex">
 	<requires>
 		<import addon="script.module.beautifulsoup4" version="4.6.2"/>
 		<import addon="script.module.requests" version="2.22.0"/>
@@ -15,6 +15,10 @@
 		<language>hu</language>
 		<platform>all</platform>
 		<news> 		
+			1.0.4 
+				- oldalváltozás lekövetve
+				- kategóriák kibővítve
+				- feliratok (videa forráshoz)
 			1.0.3 - os verzió kiszedése
 			1.0.2 - os, kodi, addon verziószám írása a logba
 			1.0.1 - kategóriák, kereső bővítése

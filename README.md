@@ -3,6 +3,11 @@
 
 Kodi kiegészítő a Mozikatalogus-hoz
 
+1.0.4
+	- oldalváltozás lekövetve
+	- kategóriák kibővítve
+	- feliratok (videa forráshoz)
+
 1.0.3 - os verzió kiszedése
 
 1.0.2 - os, kodi, addon verziószám írása a logba
